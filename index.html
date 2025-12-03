@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paweł Szewczyk | Senior Backend Developer</title>
+    <title>Paweł Szewczyk | Senior Backend Developer & AI Enthusiast</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,8 +13,9 @@
             --text-secondary: #94a3b8;
             --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.3);
+            --ai-accent: #a855f7; /* Fioletowy dla AI */
+            --ai-glow: rgba(168, 85, 247, 0.3);
             --timeline-line: #334155;
-            --tech-tag-bg: #334155;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -87,45 +88,14 @@
             cursor: pointer;
         }
         
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-color);
-        }
-        
-        .btn-primary:hover {
-            box-shadow: 0 0 20px var(--accent-glow);
-            transform: translateY(-2px);
-        }
+        .btn-primary { background: var(--accent); color: var(--bg-color); }
+        .btn-primary:hover { box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-2px); }
+        .btn-outline:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-2px); box-shadow: 0 0 20px var(--accent-glow); }
 
-        .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        /* SVG Icons style */
-        .icon-svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* Social Links */
-        .social-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: var(--text-secondary);
-            transition: 0.3s;
-        }
-        .social-link:hover {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-        .social-icon-large {
-            width: 30px;
-            height: 30px;
-            fill: currentColor;
-        }
+        .icon-svg { width: 20px; height: 20px; fill: currentColor; }
+        .social-link { display: inline-block; margin-top: 15px; color: var(--text-secondary); transition: 0.3s; }
+        .social-link:hover { color: var(--accent); transform: scale(1.1); }
+        .social-icon-large { width: 30px; height: 30px; fill: currentColor; }
 
         /* --- ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.6s ease-out; }
@@ -217,12 +187,33 @@
         .mini-tag { font-size: 0.75rem; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 3px 8px; border-radius: 4px; }
 
         /* --- SKILLS --- */
-        .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .skill-tag {
             background: var(--card-bg); padding: 12px 25px; border-radius: 50px;
             border: 1px solid #334155; font-weight: 500; transition: 0.3s; cursor: default;
         }
         .skill-tag:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.05); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        /* AI SPECIFIC TAGS */
+        .skill-tag.ai {
+            border-color: var(--ai-accent);
+            color: #e9d5ff;
+            background: rgba(168, 85, 247, 0.1);
+        }
+        .skill-tag.ai:hover {
+            box-shadow: 0 0 15px var(--ai-glow);
+            background: var(--ai-accent);
+            color: white;
+        }
+
+        .skills-header {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         /* --- FOOTER --- */
         footer { text-align: center; padding: 60px 0; background: #020617; color: var(--text-secondary); border-top: 1px solid #1e293b; }
@@ -252,7 +243,7 @@
     <!-- HERO SECTION -->
     <header>
         <div class="container hero-content">
-            <!-- ZDJĘCIE -->
+            <!-- ZDJĘCIE (Upewnij się, że plik avatar.jpg jest w folderze) -->
             <img src="avatar.jpg" alt="Paweł Szewczyk" class="profile-photo reveal">
             
             <h1 class="reveal">Paweł Mateusz Szewczyk</h1>
@@ -266,8 +257,8 @@
 
             <h2><span id="typewriter"></span>|</h2>
             <p class="reveal" style="transition-delay: 0.2s;" data-i18n="hero_desc">
-                Ponad 9 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>
-                Ekspert w ekosystemie Java & SAP Hybris.
+                Ponad 11 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>
+                Ekspert w ekosystemie Java, SAP Hybris & AI-Assisted Development.
             </p>
             
             <!-- BUTTONS -->
@@ -307,22 +298,12 @@
                     </div>
                 </div>
 
-                <!-- 2. COLUMBUS -->
+                <!-- 2. XXL SWEDEN (COLUMBUS) -->
                 <div class="timeline-item right reveal-right">
-                    <div class="content">
-                        <span class="date">02.2024 - 02.2024</span>
-                        <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">Columbus</span>
-                        <p data-i18n="desc_columbus">Analiza systemowa i rozwój backendu dla rozwiązań energetycznych.</p>
-                    </div>
-                </div>
-
-                <!-- 3. XXL SWEDEN -->
-                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">07.2022 - 12.2023</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">XXL Sweden (via Hycom S.A.)</span>
+                        <span class="company">XXL Sweden (via Columbus)</span>
                         <p data-i18n="desc_xxl">Migracja funkcjonalności z SAP Hybris do architektury Serverless (AWS Lambda). Implementacja nowych funkcji dla największego sprzedawcy sportowego w Szwecji.</p>
                         <div class="mini-tech-stack">
                             <span class="mini-tag">Hybris</span>
@@ -334,12 +315,12 @@
                     </div>
                 </div>
 
-                <!-- 4. MEDIQ -->
-                <div class="timeline-item right reveal-right">
+                <!-- 3. MEDIQ (COLUMBUS) -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">04.2022 - 07.2022</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">Mediq (via Hycom S.A.)</span>
+                        <span class="company">Mediq (via Columbus)</span>
                         <p data-i18n="desc_mediq">Budowa nowego sklepu internetowego oraz systemu obsługi recept zintegrowanego z SAP Cloud.</p>
                         <div class="mini-tech-stack">
                             <span class="mini-tag">Hybris</span>
@@ -350,12 +331,12 @@
                     </div>
                 </div>
 
-                <!-- 5. VOLVO -->
-                <div class="timeline-item left reveal-left">
+                <!-- 4. VOLVO (COLUMBUS) -->
+                <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">02.2022 - 03.2022</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">Volvo (via Hycom S.A.)</span>
+                        <span class="company">Volvo (via Columbus)</span>
                         <p data-i18n="desc_volvo">Aktualizacja serwera konwersji dokumentów (Miramo API & Jetty) do pracy wielowątkowej.</p>
                         <div class="mini-tech-stack">
                             <span class="mini-tag">Java</span>
@@ -365,8 +346,8 @@
                     </div>
                 </div>
 
-                <!-- 6. BOSCH -->
-                <div class="timeline-item right reveal-right">
+                <!-- 5. BOSCH (HYCOM) -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">12.2018 - 01.2022</span>
                         <h3 class="job-title">Senior Hybris Developer</h3>
@@ -381,8 +362,8 @@
                     </div>
                 </div>
 
-                <!-- 7. ORANGE (OLD) -->
-                <div class="timeline-item left reveal-left">
+                <!-- 6. ORANGE (OLD) -->
+                <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">09.2016 - 10.2018</span>
                         <h3 class="job-title" data-i18n="role_dev">Developer</h3>
@@ -397,8 +378,8 @@
                     </div>
                 </div>
 
-                <!-- 8. POLKOMTEL -->
-                <div class="timeline-item right reveal-right">
+                <!-- 7. POLKOMTEL -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">06.2016 - 09.2016</span>
                         <h3 class="job-title" data-i18n="role_junior">Junior Developer</h3>
@@ -412,21 +393,7 @@
                     </div>
                 </div>
 
-                <!-- 9. POC INTERCARS -->
-                <div class="timeline-item left reveal-left">
-                    <div class="content">
-                        <span class="date">04.2016 - 06.2016</span>
-                        <h3 class="job-title" data-i18n="role_dev">Developer (POC)</h3>
-                        <span class="company">InterCars USA</span>
-                        <p data-i18n="desc_intercars">Proof of Concept oparty na ATG Commerce i Endeca.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Java</span>
-                            <span class="mini-tag">ATG Commerce</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 10. EARLY CAREER -->
+                <!-- 8. EARLY CAREER -->
                 <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">2014 - 2016</span>
@@ -444,19 +411,36 @@
     <section id="skills" style="background: #162032;">
         <div class="container">
             <h2 class="section-title reveal" data-i18n="skills_title">Moje Technologie</h2>
+            
+            <h3 class="skills-header reveal">Core & Backend</h3>
             <div class="skills-container reveal">
                 <div class="skill-tag">Java 17 / 11 / 8</div>
                 <div class="skill-tag">Spring Boot</div>
                 <div class="skill-tag">SAP Commerce (Hybris)</div>
                 <div class="skill-tag">Groovy & Spock</div>
                 <div class="skill-tag">Microservices</div>
+                <div class="skill-tag">SQL (Oracle, MySQL)</div>
+                <div class="skill-tag">Node.js</div>
+            </div>
+
+            <h3 class="skills-header reveal">Cloud & DevOps</h3>
+            <div class="skills-container reveal">
                 <div class="skill-tag">AWS (Lambda, DynamoDB)</div>
                 <div class="skill-tag">Azure</div>
-                <div class="skill-tag">Node.js</div>
                 <div class="skill-tag">Docker</div>
-                <div class="skill-tag">SQL (Oracle, MySQL)</div>
                 <div class="skill-tag">Git & Jira</div>
             </div>
+
+            <h3 class="skills-header reveal" style="color: var(--ai-accent);">AI & GenAI Integration</h3>
+            <div class="skills-container reveal">
+                <div class="skill-tag ai">Claude Sonnet</div>
+                <div class="skill-tag ai">ChatGPT</div>
+                <div class="skill-tag ai">Gemini</div>
+                <div class="skill-tag ai">Suno</div>
+                <div class="skill-tag ai">LTX</div>
+                <div class="skill-tag ai">VAN</div>
+            </div>
+
         </div>
     </section>
 
@@ -484,7 +468,7 @@
         // --- TRANSLATIONS DICTIONARY ---
         const translations = {
             pl: {
-                hero_desc: "Ponad 9 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>Ekspert w ekosystemie Java & SAP Hybris.",
+                hero_desc: "Ponad 11 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>Ekspert w ekosystemie Java, SAP Hybris & AI-Assisted Development.",
                 contact_btn: "Skontaktuj się",
                 download_cv: "Pobierz CV",
                 exp_title: "Ścieżka Kariery",
@@ -498,21 +482,19 @@
                 role_early: "Początki Kariery / Staże",
                 
                 desc_orange_new: "Projektowanie i rozwój dedykowanych mikroserwisów Spring Boot dla kluczowych modułów e-commerce. Implementacja logiki biznesowej w Java 17 oraz testy w Spock/Groovy.",
-                desc_columbus: "Analiza systemowa i rozwój backendu dla rozwiązań energetycznych.",
                 desc_xxl: "Migracja funkcjonalności z SAP Hybris do architektury Serverless (AWS Lambda). Implementacja nowych funkcji dla największego sprzedawcy sportowego w Szwecji.",
                 desc_mediq: "Budowa nowego sklepu internetowego oraz systemu obsługi recept zintegrowanego z SAP Cloud.",
                 desc_volvo: "Aktualizacja serwera konwersji dokumentów (Miramo API & Jetty) do pracy wielowątkowej.",
                 desc_bosch: "Rozwój globalnej platformy Bosch Commerce (custom extension SAP Hybris) działającej w 19 krajach.",
                 desc_orange_old: "Backend dla portalu 'Orange Love', integracja POS, mapy punktów odbioru oraz optymalizacja SEO.",
                 desc_polkomtel: "Transformacja systemów commerce na platformę SAP Hybris. Obsługa Call Center i eCare.",
-                desc_intercars: "Proof of Concept oparty na ATG Commerce i Endeca.",
                 desc_early: "Pierwsze kroki w IT: integracje SAP, ATG Commerce, pluginy Eclipse, projekty szkoleniowe.",
                 
                 // Typewriter texts
-                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "SAP Hybris Specialist", "Cloud Architect"]
+                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast", "Cloud Architect"]
             },
             en: {
-                hero_desc: "Over 9 years of experience in building scalable e-commerce systems.<br>Expert in Java & SAP Hybris ecosystem.",
+                hero_desc: "Over 11 years of experience in building scalable e-commerce systems.<br>Expert in Java, SAP Hybris & AI-Assisted Development.",
                 contact_btn: "Contact Me",
                 download_cv: "Download CV",
                 exp_title: "Career Path",
@@ -526,18 +508,16 @@
                 role_early: "Early Career / Internships",
 
                 desc_orange_new: "Designing and developing dedicated Spring Boot microservices for key e-commerce modules. Implementing business logic in Java 17 and writing tests with Spock/Groovy.",
-                desc_columbus: "System analysis and backend development for energy solutions.",
                 desc_xxl: "Migrating functionalities from SAP Hybris to Serverless architecture (AWS Lambda). Implementing new features for Sweden's largest sports retailer.",
                 desc_mediq: "Building a new web shop and custom prescription handling system integrated with SAP Cloud.",
                 desc_volvo: "Upgrading document conversion server (Miramo API & Jetty) to support multi-threading.",
                 desc_bosch: "Developing the global Bosch Commerce platform (custom SAP Hybris extension) operating in 19 countries.",
                 desc_orange_old: "Backend for 'Orange Love' portal, POS integration, pickup point maps, and SEO optimization.",
                 desc_polkomtel: "Transitioning commerce systems to SAP Hybris platform. Supporting Call Center and eCare modules.",
-                desc_intercars: "Proof of Concept based on ATG Commerce and Endeca.",
                 desc_early: "First steps in IT: SAP integrations, ATG Commerce, Eclipse plugins, training projects.",
 
                 // Typewriter texts
-                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "SAP Hybris Specialist", "Cloud Architect"]
+                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast", "Cloud Architect"]
             }
         };
 
@@ -578,11 +558,9 @@
         function setLanguage(lang) {
             currentLang = lang;
             
-            // 1. Update Buttons style
             document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             
-            // 2. Update Text Content
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -591,7 +569,6 @@
                 }
             });
 
-            // 3. Reset Typewriter to sync with new language immediately
             clearTimeout(typeTimeout);
             textIndex = 0;
             charIndex = 0;
@@ -599,7 +576,6 @@
             textElement.textContent = "";
             type();
 
-            // 4. Save preference
             localStorage.setItem('preferred_lang', lang);
         }
 
