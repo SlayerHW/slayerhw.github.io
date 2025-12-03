@@ -18,6 +18,10 @@
             --ai-accent: #a855f7; /* Purple for AI */
             --ai-glow: rgba(168, 85, 247, 0.3);
             --timeline-line: #334155;
+            
+            /* Ustawienia kropki */
+            --dot-size: 20px;
+            --line-width: 4px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -156,22 +160,56 @@
             content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 15px auto 0; border-radius: 2px;
         }
 
-        /* --- TIMELINE --- */
+        /* --- TIMELINE (FIXED) --- */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        
+        /* The Center Line */
         .timeline::after {
-            content: ''; position: absolute; width: 4px; background-color: var(--timeline-line);
-            top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px;
+            content: '';
+            position: absolute;
+            width: var(--line-width);
+            background-color: var(--timeline-line);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: calc(var(--line-width) / -2); /* Idealne centrowanie */
+            border-radius: 2px;
         }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; margin-bottom: 20px; }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* The Dot Styling */
         .timeline-item::after {
-            content: ''; position: absolute; width: 16px; height: 16px; right: -8px;
-            background-color: var(--bg-color); border: 3px solid var(--accent); top: 25px; border-radius: 50%; z-index: 1;
+            content: '';
+            position: absolute;
+            width: var(--dot-size);
+            height: var(--dot-size);
+            background-color: var(--bg-color); /* Tło kropki zgodne z tłem strony */
+            border: 4px solid var(--accent);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
             box-shadow: 0 0 10px var(--accent-glow);
         }
+
+        /* Dot Positioning Logic */
         .left { left: 0; }
         .right { left: 50%; }
-        .left::after { right: -8px; }
-        .right::after { left: -8px; }
+
+        /* Kropka dla lewego elementu musi być na prawej krawędzi (na środku) */
+        .left::after {
+            right: calc(var(--dot-size) / -2); /* Przesunięcie o połowę szerokości kropki w prawo */
+        }
+
+        /* Kropka dla prawego elementu musi być na lewej krawędzi (na środku) */
+        .right::after {
+            left: calc(var(--dot-size) / -2); /* Przesunięcie o połowę szerokości kropki w lewo */
+        }
 
         /* SPECIAL STYLE FOR FUTURE JOB */
         .timeline-item.future::after {
@@ -208,7 +246,6 @@
         .mini-tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
         .mini-tag { font-size: 0.75rem; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 3px 8px; border-radius: 4px; }
         
-        /* Future tag style */
         .mini-tag.future-tag { background: rgba(16, 185, 129, 0.1); color: var(--future-accent); }
 
         /* --- SKILLS --- */
@@ -219,25 +256,13 @@
         }
         .skill-tag:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.05); box-shadow: 0 0 15px var(--accent-glow); }
         
-        /* AI SPECIFIC TAGS */
         .skill-tag.ai {
-            border-color: var(--ai-accent);
-            color: #e9d5ff;
-            background: rgba(168, 85, 247, 0.1);
+            border-color: var(--ai-accent); color: #e9d5ff; background: rgba(168, 85, 247, 0.1);
         }
-        .skill-tag.ai:hover {
-            box-shadow: 0 0 15px var(--ai-glow);
-            background: var(--ai-accent);
-            color: white;
-        }
+        .skill-tag.ai:hover { box-shadow: 0 0 15px var(--ai-glow); background: var(--ai-accent); color: white; }
 
         .skills-header {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-align: center; color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
 
         /* --- FOOTER --- */
@@ -248,11 +273,19 @@
         /* --- RESPONSIVE --- */
         @media screen and (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
-            .timeline::after { left: 31px; }
+            
+            /* Przesunięcie linii w lewo */
+            .timeline::after { left: 30px; margin-left: -2px; }
+            
             .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; margin-bottom: 30px; }
-            .timeline-item::after { left: 21px; }
+            
+            /* Reset pozycji kropek dla mobile */
+            .left::after, .right::after {
+                left: 20px; /* 30px linia - 10px (połowa kropki) = 20px */
+                right: auto;
+            }
+            
             .left, .right { left: 0; }
-            .left::after, .right::after { left: 21px; }
             .reveal-left, .reveal-right { transform: translateY(30px); }
         }
     </style>
@@ -268,12 +301,10 @@
     <!-- HERO SECTION -->
     <header>
         <div class="container hero-content">
-            <!-- ZDJĘCIE -->
             <img src="avatar.jpg" alt="Paweł Szewczyk" class="profile-photo reveal">
             
             <h1 class="reveal">Paweł Mateusz Szewczyk</h1>
             
-            <!-- LINKEDIN ICON HEADER -->
             <div class="reveal">
                 <a href="https://www.linkedin.com/in/paweł-szewczyk" target="_blank" class="social-link" title="LinkedIn Profile">
                     <svg class="social-icon-large" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -286,7 +317,6 @@
                 Ekspert w ekosystemie Java, SAP Hybris & AI-Assisted Development.
             </p>
             
-            <!-- BUTTONS -->
             <div class="btn-group reveal" style="transition-delay: 0.4s;">
                 <a href="#contact" class="btn btn-primary" data-i18n="contact_btn">
                     Skontaktuj się
@@ -307,7 +337,7 @@
             <h2 class="section-title reveal" data-i18n="exp_title">Ścieżka Kariery</h2>
             <div class="timeline">
                 
-                <!-- 0. FUTURE (2026+) - NEW SECTION -->
+                <!-- 0. FUTURE (2026+) -->
                 <div class="timeline-item future left reveal-left">
                     <div class="content">
                         <span class="date">2026 - ...</span>
@@ -323,7 +353,7 @@
                     </div>
                 </div>
 
-                <!-- 1. ORANGE (NOWE) - SHIFTED TO RIGHT -->
+                <!-- 1. ORANGE (NOWE) -->
                 <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">03.2024 - 12.2025</span>
@@ -339,7 +369,7 @@
                     </div>
                 </div>
 
-                <!-- 2. XXL SWEDEN (COLUMBUS) - SHIFTED TO LEFT -->
+                <!-- 2. XXL SWEDEN (COLUMBUS) -->
                 <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">07.2022 - 12.2023</span>
@@ -356,7 +386,7 @@
                     </div>
                 </div>
 
-                <!-- 3. MEDIQ (COLUMBUS) - SHIFTED TO RIGHT -->
+                <!-- 3. MEDIQ (COLUMBUS) -->
                 <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">04.2022 - 07.2022</span>
@@ -372,7 +402,7 @@
                     </div>
                 </div>
 
-                <!-- 4. VOLVO (COLUMBUS) - SHIFTED TO LEFT -->
+                <!-- 4. VOLVO (COLUMBUS) -->
                 <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">02.2022 - 03.2022</span>
@@ -387,7 +417,7 @@
                     </div>
                 </div>
 
-                <!-- 5. BOSCH (HYCOM) - SHIFTED TO RIGHT -->
+                <!-- 5. BOSCH (HYCOM) -->
                 <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">12.2018 - 01.2022</span>
@@ -403,7 +433,7 @@
                     </div>
                 </div>
 
-                <!-- 6. ORANGE (OLD) - SHIFTED TO LEFT -->
+                <!-- 6. ORANGE (OLD) -->
                 <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">09.2016 - 10.2018</span>
@@ -419,7 +449,7 @@
                     </div>
                 </div>
 
-                <!-- 7. POLKOMTEL - SHIFTED TO RIGHT -->
+                <!-- 7. POLKOMTEL -->
                 <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">06.2016 - 09.2016</span>
@@ -434,7 +464,7 @@
                     </div>
                 </div>
 
-                <!-- 8. EARLY CAREER - SHIFTED TO LEFT -->
+                <!-- 8. EARLY CAREER -->
                 <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">2014 - 2016</span>
@@ -537,8 +567,8 @@
                 desc_polkomtel: "Transformacja systemów commerce na platformę SAP Hybris. Obsługa Call Center i eCare.",
                 desc_early: "Pierwsze kroki w IT: integracje SAP, ATG Commerce, pluginy Eclipse, projekty szkoleniowe.",
                 
-                // Typewriter texts
-                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast", "Cloud Architect"]
+                // Typewriter texts (REMOVED Cloud Architect)
+                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast"]
             },
             en: {
                 hero_desc: "Over 11 years of experience in building scalable e-commerce systems.<br>Expert in Java, SAP Hybris & AI-Assisted Development.",
@@ -567,8 +597,8 @@
                 desc_polkomtel: "Transitioning commerce systems to SAP Hybris platform. Supporting Call Center and eCare modules.",
                 desc_early: "First steps in IT: SAP integrations, ATG Commerce, Eclipse plugins, training projects.",
 
-                // Typewriter texts
-                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast", "Cloud Architect"]
+                // Typewriter texts (REMOVED Cloud Architect)
+                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast"]
             }
         };
 
