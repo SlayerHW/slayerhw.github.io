@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paweł Szewczyk | Senior Backend Developer & AI Enthusiast</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Dodanie biblioteki ikon Devicon -->
+    <!-- Devicon dla technologii backendowych -->
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     
     <style>
@@ -15,7 +15,7 @@
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
             --accent: #38bdf8; /* Blue */
-            --accent-glow: rgba(56, 189, 248, 0.3);
+            --accent-glow: rgba(56, 189, 248, 0.4);
             --future-accent: #10b981; /* Green */
             --future-glow: rgba(16, 185, 129, 0.4);
             --ai-accent: #a855f7; /* Purple */
@@ -113,13 +113,13 @@
 
         /* --- HERO --- */
         header {
-            height: 100vh; /* Pełna wysokość */
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
-            position: relative; /* Dla pozycjonowania strzałki */
+            position: relative;
         }
         
         .profile-photo {
@@ -145,19 +145,42 @@
         .hero-content h2 { font-size: 1.5rem; color: var(--accent); margin-bottom: 10px; min-height: 1.6em; }
         .hero-content p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px auto; }
 
-        /* SCROLL DOWN INDICATOR */
+        /* SCROLL DOWN INDICATOR (IMPROVED) */
         .scroll-down-container {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background-color: rgba(15, 23, 42, 0.6); /* Ciemne tło dla kontrastu */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             animation: bounce 2s infinite;
             cursor: pointer;
-            opacity: 0.7;
+            box-shadow: 0 0 15px var(--accent-glow);
+            transition: 0.3s;
+            z-index: 10;
+        }
+        
+        .scroll-down-container:hover {
+            background-color: var(--accent);
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .scroll-down-container svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff; /* Biała strzałka */
             transition: 0.3s;
         }
-        .scroll-down-container:hover { opacity: 1; color: var(--accent); }
-        .scroll-down-container svg { width: 30px; height: 30px; fill: var(--text-secondary); }
+        
+        .scroll-down-container:hover svg {
+            fill: var(--bg-color); /* Ciemna strzałka po najechaniu */
+        }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
@@ -191,7 +214,6 @@
         .left::after { right: calc(var(--dot-size) / -2); }
         .right::after { left: calc(var(--dot-size) / -2); }
 
-        /* FUTURE STYLE */
         .timeline-item.future::after {
             border-color: var(--future-accent); box-shadow: 0 0 15px var(--future-glow); animation: pulse 2s infinite;
         }
@@ -224,13 +246,15 @@
         .skill-tag {
             background: var(--card-bg); padding: 12px 25px; border-radius: 50px;
             border: 1px solid #334155; font-weight: 500; transition: 0.3s; cursor: default;
-            display: flex; align-items: center; gap: 10px; /* Flex dla ikon */
+            display: flex; align-items: center; gap: 10px;
         }
-        .skill-tag i { font-size: 1.2rem; } /* Rozmiar ikony */
+        .skill-tag i { font-size: 1.2rem; }
         .skill-tag:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.05); box-shadow: 0 0 15px var(--accent-glow); }
         
         .skill-tag.ai { border-color: var(--ai-accent); color: #e9d5ff; background: rgba(168, 85, 247, 0.1); }
         .skill-tag.ai:hover { box-shadow: 0 0 15px var(--ai-glow); background: var(--ai-accent); color: white; }
+        /* SVG Fix for AI icons */
+        .skill-tag.ai svg { width: 20px; height: 20px; fill: currentColor; }
 
         .skills-header { text-align: center; color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
@@ -292,7 +316,7 @@
             <!-- SCROLL INDICATOR -->
             <a href="#experience" class="scroll-down-container">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z" fill="currentColor"/>
+                    <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z"/>
                 </svg>
             </a>
         </div>
@@ -455,7 +479,7 @@
                 <div class="skill-tag"><i class="devicon-java-plain"></i> Java 17 / 11 / 8</div>
                 <div class="skill-tag"><i class="devicon-spring-original"></i> Spring Boot</div>
                 <div class="skill-tag"><i class="devicon-groovy-plain"></i> Groovy & Spock</div>
-                <div class="skill-tag">SAP Commerce (Hybris)</div> <!-- Brak oficjalnej ikony w Devicon -->
+                <div class="skill-tag">SAP Commerce (Hybris)</div>
                 <div class="skill-tag">Microservices</div>
                 <div class="skill-tag"><i class="devicon-mysql-plain"></i> SQL (MySQL)</div>
                 <div class="skill-tag"><i class="devicon-oracle-original"></i> Oracle DB</div>
@@ -473,20 +497,61 @@
 
             <h3 class="skills-header reveal" style="color: var(--ai-accent);">AI & GenAI Integration</h3>
             <div class="skills-container reveal">
+                <!-- Claude (Anthropic Logo) -->
                 <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L9.19 8.63L2 12L9.19 15.37L12 22L14.81 15.37L22 12L14.81 8.63L12 2Z" fill="currentColor"/></svg>
+                    <svg viewBox="0 0 100 100" class="icon-svg">
+                        <path d="M20 80h60V20H20v60zm10-50h40v40H30V30z" fill="currentColor"/> <!-- Simplified Anthropic/Claude shape representation -->
+                    </svg>
                     Claude Sonnet
                 </div>
+                
+                <!-- ChatGPT (OpenAI Swirl) -->
                 <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="currentColor"/></svg>
+                     <svg class="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.28 9.82a5.98 5.98 0 0 0-.42-6.52 6 6 0 0 0-6.17-2.12 5.95 5.95 0 0 0-4.66-2.5 5.98 5.98 0 0 0-4.66 2.5 5.96 5.96 0 0 0-6.17 2.12A5.99 5.99 0 0 0 3.79 17.6a5.98 5.98 0 0 0 6.17 2.12 5.95 5.95 0 0 0 4.66 2.5 5.98 5.98 0 0 0 4.66-2.5 5.96 5.96 0 0 0 6.17-2.12 5.99 5.99 0 0 0-3.17-7.78zm-11.85 9.77a4.04 4.04 0 0 1-3.69-2.22l.14-.08 4.29-2.48a.95.95 0 0 0 .48-.83v-4.9l1.63.95v5.8a4.04 4.04 0 0 1-2.85 3.76zm-6.66-4.52a4.04 4.04 0 0 1 .43-4.26l.15.08 4.22 2.44a.97.97 0 0 0 .96 0l4.25-2.45-1.63-.94-3.77 2.18-3.78-2.18a4.03 4.03 0 0 1-.83 5.13zm1.18-8.8a4.04 4.04 0 0 1 4.14-.98l-.15.09-4.22 2.43a.97.97 0 0 0-.48.83v4.9l-1.63-.94v-5.8c0-1.5.83-2.88 2.34-3.53zm9.64.67l-4.25 2.45 1.63.94 3.77-2.18 3.78 2.18a4.03 4.03 0 0 1 .83-5.13 4.04 4.04 0 0 1-.43 4.26l-.15-.08-4.18-2.44a.97.97 0 0 0-.96 0l.01-.01zm2.5 8.35l-.15-.09-4.22-2.43a.97.97 0 0 0 .48-.83v-4.9l1.63.94v5.8a4.04 4.04 0 0 1-2.34 3.53 4.04 4.04 0 0 1-1.8.41 4.02 4.02 0 0 1-2.34-.76l4.25-2.45.15.09a.97.97 0 0 0 .96 0l4.25-2.45-1.63-.94-3.77 2.18-3.78-2.18a4.04 4.04 0 0 1 5.38 3.12 4.05 4.05 0 0 1-1.25 3.16z" fill="currentColor"/>
+                    </svg>
                     ChatGPT
                 </div>
-                <div class="skill-tag ai">Perplexity</div>
-                <div class="skill-tag ai">Gemini</div>
-                <div class="skill-tag ai">Suno</div>
-                <div class="skill-tag ai">LTX</div>
-                <div class="skill-tag ai">VAN</div>
-                <div class="skill-tag ai">ComfyUI</div>
+                
+                <!-- Perplexity (Asterisk) -->
+                <div class="skill-tag ai">
+                    <svg class="icon-svg" viewBox="0 0 24 24">
+                        <path d="M10 2h4v7h7v4h-7v7h-4v-7H3v-4h7V2z" fill="currentColor"/>
+                    </svg>
+                    Perplexity
+                </div>
+                
+                <!-- Gemini (Star) -->
+                <div class="skill-tag ai">
+                    <svg class="icon-svg" viewBox="0 0 24 24">
+                         <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/>
+                    </svg>
+                    Gemini
+                </div>
+                
+                <!-- Suno (Soundwave) -->
+                <div class="skill-tag ai">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9v6h2V9H3zm4-5v16h2V4H7zm4-2v20h2V2h-2zm4 4v12h2V6h-2zm4 4v6h2v-6h-2z" fill="currentColor"/></svg>
+                    Suno
+                </div>
+                
+                <!-- LTX (Film) -->
+                <div class="skill-tag ai">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z" fill="currentColor"/></svg>
+                    LTX
+                </div>
+                
+                <!-- VAN (Abstract) -->
+                <div class="skill-tag ai">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/></svg>
+                    VAN
+                </div>
+                
+                <!-- ComfyUI (Nodes) -->
+                <div class="skill-tag ai">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 16h4v4H4v-4zm0-6h4v4H4v-4zm0-6h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zm-6 6h4v4h-4v-4zm6 0h4v4h-4v-4zm0 6h4v4h-4v-4z" fill="currentColor"/></svg>
+                    ComfyUI
+                </div>
             </div>
 
         </div>
