@@ -11,9 +11,11 @@
             --card-bg: #1e293b;
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
-            --accent: #38bdf8;
+            --accent: #38bdf8; /* Blue */
             --accent-glow: rgba(56, 189, 248, 0.3);
-            --ai-accent: #a855f7; /* Fioletowy dla AI */
+            --future-accent: #10b981; /* Green for Future */
+            --future-glow: rgba(16, 185, 129, 0.4);
+            --ai-accent: #a855f7; /* Purple for AI */
             --ai-glow: rgba(168, 85, 247, 0.3);
             --timeline-line: #334155;
         }
@@ -171,6 +173,26 @@
         .left::after { right: -8px; }
         .right::after { left: -8px; }
 
+        /* SPECIAL STYLE FOR FUTURE JOB */
+        .timeline-item.future::after {
+            border-color: var(--future-accent);
+            box-shadow: 0 0 15px var(--future-glow);
+            animation: pulse 2s infinite;
+        }
+        .timeline-item.future .content {
+            border-color: var(--future-accent);
+            box-shadow: 0 5px 20px var(--future-glow);
+        }
+        .timeline-item.future .date {
+            color: var(--future-accent);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
         .content {
             padding: 25px; background-color: var(--card-bg); position: relative;
             border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -185,6 +207,9 @@
 
         .mini-tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
         .mini-tag { font-size: 0.75rem; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 3px 8px; border-radius: 4px; }
+        
+        /* Future tag style */
+        .mini-tag.future-tag { background: rgba(16, 185, 129, 0.1); color: var(--future-accent); }
 
         /* --- SKILLS --- */
         .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
@@ -243,7 +268,7 @@
     <!-- HERO SECTION -->
     <header>
         <div class="container hero-content">
-            <!-- ZDJĘCIE (Upewnij się, że plik avatar.jpg jest w folderze) -->
+            <!-- ZDJĘCIE -->
             <img src="avatar.jpg" alt="Paweł Szewczyk" class="profile-photo reveal">
             
             <h1 class="reveal">Paweł Mateusz Szewczyk</h1>
@@ -282,8 +307,24 @@
             <h2 class="section-title reveal" data-i18n="exp_title">Ścieżka Kariery</h2>
             <div class="timeline">
                 
-                <!-- 1. ORANGE (NOWE) -->
-                <div class="timeline-item left reveal-left">
+                <!-- 0. FUTURE (2026+) - NEW SECTION -->
+                <div class="timeline-item future left reveal-left">
+                    <div class="content">
+                        <span class="date">2026 - ...</span>
+                        <h3 class="job-title" data-i18n="role_future">Twój Projekt / Twoja Firma</h3>
+                        <span class="company" data-i18n="company_future">Lead / Senior Backend Developer</span>
+                        <p data-i18n="desc_future">Szukam nowych wyzwań. Moje doświadczenie i pasja do AI mogą wesprzeć Twój zespół w budowaniu kolejnych świetnych rozwiązań.</p>
+                        <div class="mini-tech-stack">
+                            <span class="mini-tag future-tag">Java</span>
+                            <span class="mini-tag future-tag">AI Integration</span>
+                            <span class="mini-tag future-tag">Cloud</span>
+                            <span class="mini-tag future-tag">Success</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. ORANGE (NOWE) - SHIFTED TO RIGHT -->
+                <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">03.2024 - 12.2025</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
@@ -298,8 +339,8 @@
                     </div>
                 </div>
 
-                <!-- 2. XXL SWEDEN (COLUMBUS) -->
-                <div class="timeline-item right reveal-right">
+                <!-- 2. XXL SWEDEN (COLUMBUS) - SHIFTED TO LEFT -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">07.2022 - 12.2023</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
@@ -315,8 +356,8 @@
                     </div>
                 </div>
 
-                <!-- 3. MEDIQ (COLUMBUS) -->
-                <div class="timeline-item left reveal-left">
+                <!-- 3. MEDIQ (COLUMBUS) - SHIFTED TO RIGHT -->
+                <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">04.2022 - 07.2022</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
@@ -331,8 +372,8 @@
                     </div>
                 </div>
 
-                <!-- 4. VOLVO (COLUMBUS) -->
-                <div class="timeline-item right reveal-right">
+                <!-- 4. VOLVO (COLUMBUS) - SHIFTED TO LEFT -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">02.2022 - 03.2022</span>
                         <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
@@ -346,8 +387,8 @@
                     </div>
                 </div>
 
-                <!-- 5. BOSCH (HYCOM) -->
-                <div class="timeline-item left reveal-left">
+                <!-- 5. BOSCH (HYCOM) - SHIFTED TO RIGHT -->
+                <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">12.2018 - 01.2022</span>
                         <h3 class="job-title">Senior Hybris Developer</h3>
@@ -362,8 +403,8 @@
                     </div>
                 </div>
 
-                <!-- 6. ORANGE (OLD) -->
-                <div class="timeline-item right reveal-right">
+                <!-- 6. ORANGE (OLD) - SHIFTED TO LEFT -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">09.2016 - 10.2018</span>
                         <h3 class="job-title" data-i18n="role_dev">Developer</h3>
@@ -378,12 +419,12 @@
                     </div>
                 </div>
 
-                <!-- 7. POLKOMTEL -->
-                <div class="timeline-item left reveal-left">
+                <!-- 7. POLKOMTEL - SHIFTED TO RIGHT -->
+                <div class="timeline-item right reveal-right">
                     <div class="content">
                         <span class="date">06.2016 - 09.2016</span>
                         <h3 class="job-title" data-i18n="role_junior">Junior Developer</h3>
-                        <span class="company">Polkomtel</span>
+                        <span class="company">Polkomtel (via Hycom S.A.)</span>
                         <p data-i18n="desc_polkomtel">Transformacja systemów commerce na platformę SAP Hybris. Obsługa Call Center i eCare.</p>
                         <div class="mini-tech-stack">
                             <span class="mini-tag">Java</span>
@@ -393,8 +434,8 @@
                     </div>
                 </div>
 
-                <!-- 8. EARLY CAREER -->
-                <div class="timeline-item right reveal-right">
+                <!-- 8. EARLY CAREER - SHIFTED TO LEFT -->
+                <div class="timeline-item left reveal-left">
                     <div class="content">
                         <span class="date">2014 - 2016</span>
                         <h3 class="job-title" data-i18n="role_early">Early Career / Internships</h3>
@@ -435,10 +476,12 @@
             <div class="skills-container reveal">
                 <div class="skill-tag ai">Claude Sonnet</div>
                 <div class="skill-tag ai">ChatGPT</div>
+                <div class="skill-tag ai">Perplexity</div>
                 <div class="skill-tag ai">Gemini</div>
                 <div class="skill-tag ai">Suno</div>
                 <div class="skill-tag ai">LTX</div>
                 <div class="skill-tag ai">VAN</div>
+                <div class="skill-tag ai">ComfyUI</div>
             </div>
 
         </div>
@@ -476,6 +519,10 @@
                 contact_title: "Kontakt",
                 
                 // Job Descriptions
+                role_future: "Twój Projekt / Twoja Firma",
+                company_future: "Lead / Senior Backend Developer",
+                desc_future: "Szukam nowych wyzwań. Moje doświadczenie i pasja do AI mogą wesprzeć Twój zespół w budowaniu kolejnych świetnych rozwiązań.",
+
                 role_senior: "Senior Backend Developer",
                 role_dev: "Developer",
                 role_junior: "Junior Developer",
@@ -502,6 +549,10 @@
                 contact_title: "Contact",
 
                 // Job Descriptions
+                role_future: "Your Project / Your Company",
+                company_future: "Lead / Senior Backend Developer",
+                desc_future: "Looking for new challenges. My experience and passion for AI can support your team in building the next great solution.",
+
                 role_senior: "Senior Backend Developer",
                 role_dev: "Developer",
                 role_junior: "Junior Developer",
