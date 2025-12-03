@@ -88,13 +88,29 @@
 
         /* --- HERO --- */
         header {
-            height: 100vh;
+            min-height: 100vh; /* Zmiana na min-height dla lepszej responsywności */
+            padding: 100px 0;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
         }
+        
+        /* Styl zdjęcia profilowego */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px var(--accent-glow);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 10px;
@@ -105,19 +121,26 @@
         .hero-content h2 { font-size: 1.5rem; color: var(--accent); margin-bottom: 20px; min-height: 1.6em; }
         .hero-content p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px auto; }
 
-        /* --- SECTIONS --- */
+        /* --- SECTIONS & TITLES (FIXED CENTERING) --- */
         section { padding: 80px 0; }
+        
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 60px;
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            display: block;
+            width: 100%;
         }
+
         .section-title::after {
-            content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 10px auto 0; border-radius: 2px;
+            content: ''; 
+            display: block; 
+            width: 60px; 
+            height: 4px; 
+            background: var(--accent); 
+            margin: 15px auto 0;
+            border-radius: 2px;
         }
 
         /* --- TIMELINE --- */
@@ -187,6 +210,9 @@
     <!-- HERO SECTION -->
     <header>
         <div class="container hero-content">
+            <!-- ZDJĘCIE PROFILOWE -->
+            <img src="avatar.jpeg" alt="Paweł Szewczyk" class="profile-photo reveal">
+            
             <h1 class="reveal">Paweł Mateusz Szewczyk</h1>
             <h2><span id="typewriter"></span>|</h2>
             <p class="reveal" style="transition-delay: 0.2s;" data-i18n="hero_desc">
@@ -389,7 +415,7 @@
         // --- TRANSLATIONS DICTIONARY ---
         const translations = {
             pl: {
-                hero_desc: "Ponad 11 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>Ekspert w ekosystemie Java & SAP Commerce (Hybris).",
+                hero_desc: "Ponad 9 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>Ekspert w ekosystemie Java & SAP Hybris.",
                 contact_btn: "Skontaktuj się",
                 exp_title: "Ścieżka Kariery",
                 skills_title: "Moje Technologie",
@@ -416,7 +442,7 @@
                 type_texts: ["Senior Backend Developer", "Java & Spring Expert", "SAP Hybris Specialist", "Cloud Architect"]
             },
             en: {
-                hero_desc: "Over 11 years of experience in building scalable e-commerce systems.<br>Expert in Java & SAP Commerce (Hybris) ecosystem.",
+                hero_desc: "Over 9 years of experience in building scalable e-commerce systems.<br>Expert in Java & SAP Hybris ecosystem.",
                 contact_btn: "Contact Me",
                 exp_title: "Career Path",
                 skills_title: "Tech Stack",
