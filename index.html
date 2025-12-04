@@ -1,727 +1,311 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paweł Szewczyk | Senior Backend Developer & AI Enthusiast</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Devicon dla technologii backendowych -->
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent: #38bdf8; /* Blue */
-            --accent-glow: rgba(56, 189, 248, 0.4);
-            --future-accent: #10b981; /* Green */
-            --future-glow: rgba(16, 185, 129, 0.4);
-            --ai-accent: #a855f7; /* Purple */
-            --ai-glow: rgba(168, 85, 247, 0.3);
-            --timeline-line: #334155;
-            --dot-size: 20px;
-            --line-width: 4px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paweł Szewczyk | Senior Backend Developer & AI Enthusiast</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  <!-- Czcionki -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-            transition: 0.3s;
-        }
+  <!-- Ikony Devicon -->
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-        /* --- LANGUAGE SWITCHER --- */
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid #334155;
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-            padding: 5px 10px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-
-        .lang-btn.active {
-            background: var(--accent);
-            color: var(--bg-color);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        /* --- UTILS --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 30px;
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        
-        .btn-primary { background: var(--accent); color: var(--bg-color); }
-        .btn-primary:hover { box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-2px); }
-        .btn-outline:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-2px); box-shadow: 0 0 20px var(--accent-glow); }
-
-        .icon-svg { width: 20px; height: 20px; fill: currentColor; }
-        .social-link { display: inline-block; margin-top: 15px; color: var(--text-secondary); transition: 0.3s; }
-        .social-link:hover { color: var(--accent); transform: scale(1.1); }
-        .social-icon-large { width: 30px; height: 30px; fill: currentColor; }
-
-        /* --- ANIMATIONS --- */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.6s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.6s ease-out; }
-        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.6s ease-out; }
-        .reveal-left.active, .reveal-right.active { opacity: 1; transform: translateX(0); }
-
-        /* --- HERO --- */
-        header {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
-            position: relative;
-        }
-        
-        .profile-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid var(--accent);
-            object-fit: cover;
-            margin-bottom: 25px;
-            box-shadow: 0 0 30px var(--accent-glow);
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-content h2 { font-size: 1.5rem; color: var(--accent); margin-bottom: 10px; min-height: 1.6em; }
-        .hero-content p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px auto; }
-
-        /* SCROLL DOWN INDICATOR (IMPROVED) */
-        .scroll-down-container {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            background-color: rgba(15, 23, 42, 0.6); /* Ciemne tło dla kontrastu */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            box-shadow: 0 0 15px var(--accent-glow);
-            transition: 0.3s;
-            z-index: 10;
-        }
-        
-        .scroll-down-container:hover {
-            background-color: var(--accent);
-            box-shadow: 0 0 25px var(--accent-glow);
-        }
-
-        .scroll-down-container svg {
-            width: 24px;
-            height: 24px;
-            fill: #fff; /* Biała strzałka */
-            transition: 0.3s;
-        }
-        
-        .scroll-down-container:hover svg {
-            fill: var(--bg-color); /* Ciemna strzałka po najechaniu */
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
-            40% {transform: translateX(-50%) translateY(-10px);}
-            60% {transform: translateX(-50%) translateY(-5px);}
-        }
-
-        /* --- SECTIONS --- */
-        section { padding: 80px 0; }
-        
-        .section-title {
-            text-align: center; font-size: 2.5rem; margin-bottom: 60px; position: relative; display: block; width: 100%;
-        }
-        .section-title::after {
-            content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 15px auto 0; border-radius: 2px;
-        }
-
-        /* --- TIMELINE --- */
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
-        .timeline::after {
-            content: ''; position: absolute; width: var(--line-width); background-color: var(--timeline-line);
-            top: 0; bottom: 0; left: 50%; margin-left: calc(var(--line-width) / -2); border-radius: 2px;
-        }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; margin-bottom: 20px; }
-        .timeline-item::after {
-            content: ''; position: absolute; width: var(--dot-size); height: var(--dot-size);
-            background-color: var(--bg-color); border: 4px solid var(--accent); top: 25px; border-radius: 50%; z-index: 1;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .left { left: 0; } .right { left: 50%; }
-        .left::after { right: calc(var(--dot-size) / -2); }
-        .right::after { left: calc(var(--dot-size) / -2); }
-
-        .timeline-item.future::after {
-            border-color: var(--future-accent); box-shadow: 0 0 15px var(--future-glow); animation: pulse 2s infinite;
-        }
-        .timeline-item.future .content { border-color: var(--future-accent); box-shadow: 0 5px 20px var(--future-glow); }
-        .timeline-item.future .date { color: var(--future-accent); }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
-        .content {
-            padding: 25px; background-color: var(--card-bg); position: relative;
-            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
-        }
-        .content:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 25px var(--accent-glow); }
-        
-        .date { font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 5px; display: block; text-transform: uppercase; letter-spacing: 1px; }
-        .job-title { font-size: 1.25rem; margin-bottom: 5px; color: #fff; font-weight: 600; }
-        .company { font-style: italic; color: var(--text-secondary); margin-bottom: 12px; display: block; font-size: 0.95rem; }
-        .content p { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 15px; }
-
-        .mini-tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
-        .mini-tag { font-size: 0.75rem; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 3px 8px; border-radius: 4px; }
-        .mini-tag.future-tag { background: rgba(16, 185, 129, 0.1); color: var(--future-accent); }
-
-        /* --- SKILLS --- */
-        .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .skill-tag {
-            background: var(--card-bg); padding: 12px 25px; border-radius: 50px;
-            border: 1px solid #334155; font-weight: 500; transition: 0.3s; cursor: default;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .skill-tag i { font-size: 1.2rem; }
-        .skill-tag:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.05); box-shadow: 0 0 15px var(--accent-glow); }
-        
-        .skill-tag.ai { border-color: var(--ai-accent); color: #e9d5ff; background: rgba(168, 85, 247, 0.1); }
-        .skill-tag.ai:hover { box-shadow: 0 0 15px var(--ai-glow); background: var(--ai-accent); color: white; }
-        /* SVG Fix for AI icons */
-        .skill-tag.ai svg { width: 20px; height: 20px; fill: currentColor; }
-
-        .skills-header { text-align: center; color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- FOOTER --- */
-        footer { text-align: center; padding: 60px 0; background: #020617; color: var(--text-secondary); border-top: 1px solid #1e293b; }
-        footer a.mail-link { color: var(--accent); text-decoration: none; }
-        footer .social-footer { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
-
-        /* --- RESPONSIVE --- */
-        @media screen and (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .timeline::after { left: 30px; margin-left: -2px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; margin-bottom: 30px; }
-            .left::after, .right::after { left: 20px; right: auto; }
-            .left, .right { left: 0; }
-            .reveal-left, .reveal-right { transform: translateY(30px); }
-        }
-    </style>
+  <!-- Twój główny plik stylów -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Language Switcher -->
-    <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLanguage('pl')" id="btn-pl">PL</button>
-        <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+<!-- Language Switcher -->
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLanguage('pl')" id="btn-pl">PL</button>
+  <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+</div>
+
+<!-- HERO SECTION -->
+<header>
+  <div class="container hero-content">
+    <!-- Upewnij się, że ścieżka do zdjęcia jest poprawna -->
+    <img src="images/avatar.jpeg" alt="Paweł Szewczyk" class="profile-photo reveal">
+
+    <h1 class="reveal">Paweł Mateusz Szewczyk</h1>
+
+    <div class="reveal">
+      <a href="https://www.linkedin.com/in/paweł-szewczyk" target="_blank" class="social-link" title="LinkedIn Profile">
+        <svg class="social-icon-large" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
     </div>
 
-    <!-- HERO SECTION -->
-    <header>
-        <div class="container hero-content">
-            <img src="avatar.jpg" alt="Paweł Szewczyk" class="profile-photo reveal">
-            
-            <h1 class="reveal">Paweł Mateusz Szewczyk</h1>
-            
-            <div class="reveal">
-                <a href="https://www.linkedin.com/in/paweł-szewczyk" target="_blank" class="social-link" title="LinkedIn Profile">
-                    <svg class="social-icon-large" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-            </div>
+    <h2><span id="typewriter"></span>|</h2>
+    <p class="reveal" style="transition-delay: 0.2s;" data-i18n="hero_desc">
+      Ponad 11 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>
+      Ekspert w ekosystemie Java, SAP Hybris & AI-Assisted Development.
+    </p>
 
-            <h2><span id="typewriter"></span>|</h2>
-            <p class="reveal" style="transition-delay: 0.2s;" data-i18n="hero_desc">
-                Ponad 11 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>
-                Ekspert w ekosystemie Java, SAP Hybris & AI-Assisted Development.
-            </p>
-            
-            <div class="btn-group reveal" style="transition-delay: 0.4s;">
-                <a href="#contact" class="btn btn-primary" data-i18n="contact_btn">
-                    Skontaktuj się
-                </a>
-                <a href="cv.pdf" target="_blank" class="btn btn-outline" download>
-                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 16L7 11L8.41 9.59L11 12.17V4H13V12.17L15.59 9.59L17 11L12 16ZM6 20C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V15H6V18H18V15H20V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H6Z" fill="currentColor"/>
-                    </svg>
-                    <span data-i18n="download_cv">Pobierz CV</span>
-                </a>
-            </div>
+    <div class="btn-group reveal" style="transition-delay: 0.4s;">
+      <a href="#contact" class="btn btn-primary" data-i18n="contact_btn">
+        Skontaktuj się
+      </a>
+      <!-- Upewnij się, że plik cv.pdf jest w folderze głównym -->
+      <a href="cv.pdf" target="_blank" class="btn btn-outline" download>
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 16L7 11L8.41 9.59L11 12.17V4H13V12.17L15.59 9.59L17 11L12 16ZM6 20C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V15H6V18H18V15H20V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H6Z" fill="currentColor"/>
+        </svg>
+        <span data-i18n="download_cv">Pobierz CV</span>
+      </a>
+    </div>
 
-            <!-- SCROLL INDICATOR -->
-            <a href="#experience" class="scroll-down-container">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z"/>
-                </svg>
-            </a>
+    <!-- STRZAŁKA PRZEWIJANIA (Teraz działa płynnie dzięki scroll-behavior w CSS) -->
+    <a href="#experience" class="scroll-down-container">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<!-- EXPERIENCE SECTION -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title reveal" data-i18n="exp_title">Ścieżka Kariery</h2>
+    <div class="timeline">
+
+      <!-- FUTURE -->
+      <div class="timeline-item future left reveal-left">
+        <div class="content">
+          <span class="date">2026 - ...</span>
+          <h3 class="job-title" data-i18n="role_future">Twój Projekt / Twoja Firma</h3>
+          <span class="company" data-i18n="company_future">Lead / Senior Backend Developer</span>
+          <p data-i18n="desc_future">Szukam nowych wyzwań. Moje doświadczenie i pasja do AI mogą wesprzeć Twój zespół w budowaniu kolejnych świetnych rozwiązań.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag future-tag">Java</span>
+            <span class="mini-tag future-tag">AI Integration</span>
+            <span class="mini-tag future-tag">Cloud</span>
+            <span class="mini-tag future-tag">Success</span>
+          </div>
         </div>
-    </header>
+      </div>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title reveal" data-i18n="exp_title">Ścieżka Kariery</h2>
-            <div class="timeline">
-                
-                <!-- FUTURE -->
-                <div class="timeline-item future left reveal-left">
-                    <div class="content">
-                        <span class="date">2026 - ...</span>
-                        <h3 class="job-title" data-i18n="role_future">Twój Projekt / Twoja Firma</h3>
-                        <span class="company" data-i18n="company_future">Lead / Senior Backend Developer</span>
-                        <p data-i18n="desc_future">Szukam nowych wyzwań. Moje doświadczenie i pasja do AI mogą wesprzeć Twój zespół w budowaniu kolejnych świetnych rozwiązań.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag future-tag">Java</span>
-                            <span class="mini-tag future-tag">AI Integration</span>
-                            <span class="mini-tag future-tag">Cloud</span>
-                            <span class="mini-tag future-tag">Success</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ORANGE NEW -->
-                <div class="timeline-item right reveal-right">
-                    <div class="content">
-                        <span class="date">03.2024 - 12.2025</span>
-                        <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">Orange Polska</span>
-                        <p data-i18n="desc_orange_new">Projektowanie i rozwój dedykowanych mikroserwisów Spring Boot dla kluczowych modułów e-commerce. Implementacja logiki biznesowej w Java 17 oraz testy w Spock/Groovy.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Java 17</span>
-                            <span class="mini-tag">Spring Boot</span>
-                            <span class="mini-tag">Groovy</span>
-                            <span class="mini-tag">Spock</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- XXL SWEDEN -->
-                <div class="timeline-item left reveal-left">
-                    <div class="content">
-                        <span class="date">07.2022 - 12.2023</span>
-                        <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">XXL Sweden (via Columbus)</span>
-                        <p data-i18n="desc_xxl">Migracja funkcjonalności z SAP Hybris do architektury Serverless (AWS Lambda). Implementacja nowych funkcji dla największego sprzedawcy sportowego w Szwecji.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Hybris</span>
-                            <span class="mini-tag">Node.js</span>
-                            <span class="mini-tag">AWS Lambda</span>
-                            <span class="mini-tag">DynamoDB</span>
-                            <span class="mini-tag">TypeScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MEDIQ -->
-                <div class="timeline-item right reveal-right">
-                    <div class="content">
-                        <span class="date">04.2022 - 07.2022</span>
-                        <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">Mediq (via Columbus)</span>
-                        <p data-i18n="desc_mediq">Budowa nowego sklepu internetowego oraz systemu obsługi recept zintegrowanego z SAP Cloud.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Hybris</span>
-                            <span class="mini-tag">Java</span>
-                            <span class="mini-tag">Spring</span>
-                            <span class="mini-tag">Azure</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VOLVO -->
-                <div class="timeline-item left reveal-left">
-                    <div class="content">
-                        <span class="date">02.2022 - 03.2022</span>
-                        <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
-                        <span class="company">Volvo (via Columbus)</span>
-                        <p data-i18n="desc_volvo">Aktualizacja serwera konwersji dokumentów (Miramo API & Jetty) do pracy wielowątkowej.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Java</span>
-                            <span class="mini-tag">Jetty</span>
-                            <span class="mini-tag">Miramo API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- BOSCH -->
-                <div class="timeline-item right reveal-right">
-                    <div class="content">
-                        <span class="date">12.2018 - 01.2022</span>
-                        <h3 class="job-title">Senior Hybris Developer</h3>
-                        <span class="company">Robert Bosch GmbH (via Hycom S.A.)</span>
-                        <p data-i18n="desc_bosch">Rozwój globalnej platformy Bosch Commerce (custom extension SAP Hybris) działającej w 19 krajach.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Hybris</span>
-                            <span class="mini-tag">Java</span>
-                            <span class="mini-tag">Spring</span>
-                            <span class="mini-tag">Oracle SQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ORANGE OLD -->
-                <div class="timeline-item left reveal-left">
-                    <div class="content">
-                        <span class="date">09.2016 - 10.2018</span>
-                        <h3 class="job-title" data-i18n="role_dev">Developer</h3>
-                        <span class="company">Orange Polska (via Hycom S.A.)</span>
-                        <p data-i18n="desc_orange_old">Backend dla portalu "Orange Love", integracja POS, mapy punktów odbioru oraz optymalizacja SEO.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Hybris</span>
-                            <span class="mini-tag">Java</span>
-                            <span class="mini-tag">Spring</span>
-                            <span class="mini-tag">Google Maps API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POLKOMTEL -->
-                <div class="timeline-item right reveal-right">
-                    <div class="content">
-                        <span class="date">06.2016 - 09.2016</span>
-                        <h3 class="job-title" data-i18n="role_junior">Junior Developer</h3>
-                        <span class="company">Polkomtel (via Hycom S.A.)</span>
-                        <p data-i18n="desc_polkomtel">Transformacja systemów commerce na platformę SAP Hybris. Obsługa Call Center i eCare.</p>
-                        <div class="mini-tech-stack">
-                            <span class="mini-tag">Java</span>
-                            <span class="mini-tag">Hybris</span>
-                            <span class="mini-tag">Spring</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EARLY CAREER -->
-                <div class="timeline-item left reveal-left">
-                    <div class="content">
-                        <span class="date">2014 - 2016</span>
-                        <h3 class="job-title" data-i18n="role_early">Early Career / Internships</h3>
-                        <span class="company">Polkomtel / T-Systems / Amg.lab</span>
-                        <p data-i18n="desc_early">Pierwsze kroki w IT: integracje SAP, ATG Commerce, pluginy Eclipse, projekty szkoleniowe.</p>
-                    </div>
-                </div>
-
-            </div>
+      <!-- ORANGE NEW -->
+      <div class="timeline-item right reveal-right">
+        <div class="content">
+          <span class="date">03.2024 - 12.2025</span>
+          <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
+          <span class="company">Orange Polska</span>
+          <p data-i18n="desc_orange_new">Projektowanie i rozwój dedykowanych mikroserwisów Spring Boot dla kluczowych modułów e-commerce. Implementacja logiki biznesowej w Java 17 oraz testy w Spock/Groovy.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Java 17</span>
+            <span class="mini-tag">Spring Boot</span>
+            <span class="mini-tag">Groovy</span>
+            <span class="mini-tag">Spock</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- TECH STACK SECTION WITH ICONS -->
-    <section id="skills" style="background: #162032;">
-        <div class="container">
-            <h2 class="section-title reveal" data-i18n="skills_title">Moje Technologie</h2>
-            
-            <h3 class="skills-header reveal">Core & Backend</h3>
-            <div class="skills-container reveal">
-                <div class="skill-tag"><i class="devicon-java-plain"></i> Java 17 / 11 / 8</div>
-                <div class="skill-tag"><i class="devicon-spring-original"></i> Spring Boot</div>
-                <div class="skill-tag"><i class="devicon-groovy-plain"></i> Groovy & Spock</div>
-                <div class="skill-tag">SAP Commerce (Hybris)</div>
-                <div class="skill-tag">Microservices</div>
-                <div class="skill-tag"><i class="devicon-mysql-plain"></i> SQL (MySQL)</div>
-                <div class="skill-tag"><i class="devicon-oracle-original"></i> Oracle DB</div>
-                <div class="skill-tag"><i class="devicon-nodejs-plain"></i> Node.js</div>
-            </div>
-
-            <h3 class="skills-header reveal">Cloud & DevOps</h3>
-            <div class="skills-container reveal">
-                <div class="skill-tag"><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS</div>
-                <div class="skill-tag"><i class="devicon-azure-plain"></i> Azure</div>
-                <div class="skill-tag"><i class="devicon-docker-plain"></i> Docker</div>
-                <div class="skill-tag"><i class="devicon-git-plain"></i> Git</div>
-                <div class="skill-tag"><i class="devicon-jira-plain"></i> Jira</div>
-            </div>
-
-            <h3 class="skills-header reveal" style="color: var(--ai-accent);">AI & GenAI Integration</h3>
-            <div class="skills-container reveal">
-                <!-- Claude (Anthropic Logo) -->
-                <div class="skill-tag ai">
-                    <svg viewBox="0 0 100 100" class="icon-svg">
-                        <path d="M20 80h60V20H20v60zm10-50h40v40H30V30z" fill="currentColor"/> <!-- Simplified Anthropic/Claude shape representation -->
-                    </svg>
-                    Claude Sonnet
-                </div>
-                
-                <!-- ChatGPT (OpenAI Swirl) -->
-                <div class="skill-tag ai">
-                     <svg class="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.28 9.82a5.98 5.98 0 0 0-.42-6.52 6 6 0 0 0-6.17-2.12 5.95 5.95 0 0 0-4.66-2.5 5.98 5.98 0 0 0-4.66 2.5 5.96 5.96 0 0 0-6.17 2.12A5.99 5.99 0 0 0 3.79 17.6a5.98 5.98 0 0 0 6.17 2.12 5.95 5.95 0 0 0 4.66 2.5 5.98 5.98 0 0 0 4.66-2.5 5.96 5.96 0 0 0 6.17-2.12 5.99 5.99 0 0 0-3.17-7.78zm-11.85 9.77a4.04 4.04 0 0 1-3.69-2.22l.14-.08 4.29-2.48a.95.95 0 0 0 .48-.83v-4.9l1.63.95v5.8a4.04 4.04 0 0 1-2.85 3.76zm-6.66-4.52a4.04 4.04 0 0 1 .43-4.26l.15.08 4.22 2.44a.97.97 0 0 0 .96 0l4.25-2.45-1.63-.94-3.77 2.18-3.78-2.18a4.03 4.03 0 0 1-.83 5.13zm1.18-8.8a4.04 4.04 0 0 1 4.14-.98l-.15.09-4.22 2.43a.97.97 0 0 0-.48.83v4.9l-1.63-.94v-5.8c0-1.5.83-2.88 2.34-3.53zm9.64.67l-4.25 2.45 1.63.94 3.77-2.18 3.78 2.18a4.03 4.03 0 0 1 .83-5.13 4.04 4.04 0 0 1-.43 4.26l-.15-.08-4.18-2.44a.97.97 0 0 0-.96 0l.01-.01zm2.5 8.35l-.15-.09-4.22-2.43a.97.97 0 0 0 .48-.83v-4.9l1.63.94v5.8a4.04 4.04 0 0 1-2.34 3.53 4.04 4.04 0 0 1-1.8.41 4.02 4.02 0 0 1-2.34-.76l4.25-2.45.15.09a.97.97 0 0 0 .96 0l4.25-2.45-1.63-.94-3.77 2.18-3.78-2.18a4.04 4.04 0 0 1 5.38 3.12 4.05 4.05 0 0 1-1.25 3.16z" fill="currentColor"/>
-                    </svg>
-                    ChatGPT
-                </div>
-                
-                <!-- Perplexity (Asterisk) -->
-                <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24">
-                        <path d="M10 2h4v7h7v4h-7v7h-4v-7H3v-4h7V2z" fill="currentColor"/>
-                    </svg>
-                    Perplexity
-                </div>
-                
-                <!-- Gemini (Star) -->
-                <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24">
-                         <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/>
-                    </svg>
-                    Gemini
-                </div>
-                
-                <!-- Suno (Soundwave) -->
-                <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9v6h2V9H3zm4-5v16h2V4H7zm4-2v20h2V2h-2zm4 4v12h2V6h-2zm4 4v6h2v-6h-2z" fill="currentColor"/></svg>
-                    Suno
-                </div>
-                
-                <!-- LTX (Film) -->
-                <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z" fill="currentColor"/></svg>
-                    LTX
-                </div>
-                
-                <!-- VAN (Abstract) -->
-                <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/></svg>
-                    VAN
-                </div>
-                
-                <!-- ComfyUI (Nodes) -->
-                <div class="skill-tag ai">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 16h4v4H4v-4zm0-6h4v4H4v-4zm0-6h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zm-6 6h4v4h-4v-4zm6 0h4v4h-4v-4zm0 6h4v4h-4v-4z" fill="currentColor"/></svg>
-                    ComfyUI
-                </div>
-            </div>
-
+      <!-- XXL SWEDEN -->
+      <div class="timeline-item left reveal-left">
+        <div class="content">
+          <span class="date">07.2022 - 12.2023</span>
+          <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
+          <span class="company">XXL Sweden (via Columbus)</span>
+          <p data-i18n="desc_xxl">Migracja funkcjonalności z SAP Hybris do architektury Serverless (AWS Lambda). Implementacja nowych funkcji dla największego sprzedawcy sportowego w Szwecji.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Hybris</span>
+            <span class="mini-tag">Node.js</span>
+            <span class="mini-tag">AWS Lambda</span>
+            <span class="mini-tag">DynamoDB</span>
+            <span class="mini-tag">TypeScript</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="container">
-            <h2 style="color: white; margin-bottom: 20px;" data-i18n="contact_title">Kontakt</h2>
-            <p style="font-size: 1.2rem;">📧 <a href="mailto:slayerhw@gmail.com" class="mail-link">slayerhw@gmail.com</a></p>
-            <p style="font-size: 1.2rem; margin-top: 10px;">📞 +48 697 526 445</p>
-            
-            <div class="social-footer">
-                <a href="https://www.linkedin.com/in/paweł-szewczyk" target="_blank" class="social-link" title="LinkedIn">
-                    <svg class="social-icon-large" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-            </div>
-
-            <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
-                &copy; 2025 Paweł Szewczyk.
-            </p>
+      <!-- MEDIQ -->
+      <div class="timeline-item right reveal-right">
+        <div class="content">
+          <span class="date">04.2022 - 07.2022</span>
+          <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
+          <span class="company">Mediq (via Columbus)</span>
+          <p data-i18n="desc_mediq">Budowa nowego sklepu internetowego oraz systemu obsługi recept zintegrowanego z SAP Cloud.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Hybris</span>
+            <span class="mini-tag">Java</span>
+            <span class="mini-tag">Spring</span>
+            <span class="mini-tag">Azure</span>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // --- TRANSLATIONS DICTIONARY ---
-        const translations = {
-            pl: {
-                hero_desc: "Ponad 11 lat doświadczenia w budowaniu skalowalnych systemów e-commerce.<br>Ekspert w ekosystemie Java, SAP Hybris & AI-Assisted Development.",
-                contact_btn: "Skontaktuj się",
-                download_cv: "Pobierz CV",
-                exp_title: "Ścieżka Kariery",
-                skills_title: "Moje Technologie",
-                contact_title: "Kontakt",
-                
-                // Job Descriptions
-                role_future: "Twój Projekt / Twoja Firma",
-                company_future: "Lead / Senior Backend Developer",
-                desc_future: "Szukam nowych wyzwań. Moje doświadczenie i pasja do AI mogą wesprzeć Twój zespół w budowaniu kolejnych świetnych rozwiązań.",
+      <!-- VOLVO -->
+      <div class="timeline-item left reveal-left">
+        <div class="content">
+          <span class="date">02.2022 - 03.2022</span>
+          <h3 class="job-title" data-i18n="role_senior">Senior Backend Developer</h3>
+          <span class="company">Volvo (via Columbus)</span>
+          <p data-i18n="desc_volvo">Aktualizacja serwera konwersji dokumentów (Miramo API & Jetty) do pracy wielowątkowej.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Java</span>
+            <span class="mini-tag">Jetty</span>
+            <span class="mini-tag">Miramo API</span>
+          </div>
+        </div>
+      </div>
 
-                role_senior: "Senior Backend Developer",
-                role_dev: "Developer",
-                role_junior: "Junior Developer",
-                role_early: "Początki Kariery / Staże",
-                
-                desc_orange_new: "Projektowanie i rozwój dedykowanych mikroserwisów Spring Boot dla kluczowych modułów e-commerce. Implementacja logiki biznesowej w Java 17 oraz testy w Spock/Groovy.",
-                desc_xxl: "Migracja funkcjonalności z SAP Hybris do architektury Serverless (AWS Lambda). Implementacja nowych funkcji dla największego sprzedawcy sportowego w Szwecji.",
-                desc_mediq: "Budowa nowego sklepu internetowego oraz systemu obsługi recept zintegrowanego z SAP Cloud.",
-                desc_volvo: "Aktualizacja serwera konwersji dokumentów (Miramo API & Jetty) do pracy wielowątkowej.",
-                desc_bosch: "Rozwój globalnej platformy Bosch Commerce (custom extension SAP Hybris) działającej w 19 krajach.",
-                desc_orange_old: "Backend dla portalu 'Orange Love', integracja POS, mapy punktów odbioru oraz optymalizacja SEO.",
-                desc_polkomtel: "Transformacja systemów commerce na platformę SAP Hybris. Obsługa Call Center i eCare.",
-                desc_early: "Pierwsze kroki w IT: integracje SAP, ATG Commerce, pluginy Eclipse, projekty szkoleniowe.",
-                
-                // Typewriter texts
-                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast"]
-            },
-            en: {
-                hero_desc: "Over 11 years of experience in building scalable e-commerce systems.<br>Expert in Java, SAP Hybris & AI-Assisted Development.",
-                contact_btn: "Contact Me",
-                download_cv: "Download CV",
-                exp_title: "Career Path",
-                skills_title: "Tech Stack",
-                contact_title: "Contact",
+      <!-- BOSCH -->
+      <div class="timeline-item right reveal-right">
+        <div class="content">
+          <span class="date">12.2018 - 01.2022</span>
+          <h3 class="job-title">Senior Hybris Developer</h3>
+          <span class="company">Robert Bosch GmbH (via Hycom S.A.)</span>
+          <p data-i18n="desc_bosch">Rozwój globalnej platformy Bosch Commerce (custom extension SAP Hybris) działającej w 19 krajach.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Hybris</span>
+            <span class="mini-tag">Java</span>
+            <span class="mini-tag">Spring</span>
+            <span class="mini-tag">Oracle SQL</span>
+          </div>
+        </div>
+      </div>
 
-                // Job Descriptions
-                role_future: "Your Project / Your Company",
-                company_future: "Lead / Senior Backend Developer",
-                desc_future: "Looking for new challenges. My experience and passion for AI can support your team in building the next great solution.",
+      <!-- ORANGE OLD -->
+      <div class="timeline-item left reveal-left">
+        <div class="content">
+          <span class="date">09.2016 - 10.2018</span>
+          <h3 class="job-title" data-i18n="role_dev">Developer</h3>
+          <span class="company">Orange Polska (via Hycom S.A.)</span>
+          <p data-i18n="desc_orange_old">Backend dla portalu "Orange Love", integracja POS, mapy punktów odbioru oraz optymalizacja SEO.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Hybris</span>
+            <span class="mini-tag">Java</span>
+            <span class="mini-tag">Spring</span>
+            <span class="mini-tag">Google Maps API</span>
+          </div>
+        </div>
+      </div>
 
-                role_senior: "Senior Backend Developer",
-                role_dev: "Developer",
-                role_junior: "Junior Developer",
-                role_early: "Early Career / Internships",
+      <!-- POLKOMTEL -->
+      <div class="timeline-item right reveal-right">
+        <div class="content">
+          <span class="date">06.2016 - 09.2016</span>
+          <h3 class="job-title" data-i18n="role_junior">Junior Developer</h3>
+          <span class="company">Polkomtel (via Hycom S.A.)</span>
+          <p data-i18n="desc_polkomtel">Transformacja systemów commerce na platformę SAP Hybris. Obsługa Call Center i eCare.</p>
+          <div class="mini-tech-stack">
+            <span class="mini-tag">Java</span>
+            <span class="mini-tag">Hybris</span>
+            <span class="mini-tag">Spring</span>
+          </div>
+        </div>
+      </div>
 
-                desc_orange_new: "Designing and developing dedicated Spring Boot microservices for key e-commerce modules. Implementing business logic in Java 17 and writing tests with Spock/Groovy.",
-                desc_xxl: "Migrating functionalities from SAP Hybris to Serverless architecture (AWS Lambda). Implementing new features for Sweden's largest sports retailer.",
-                desc_mediq: "Building a new web shop and custom prescription handling system integrated with SAP Cloud.",
-                desc_volvo: "Upgrading document conversion server (Miramo API & Jetty) to support multi-threading.",
-                desc_bosch: "Developing the global Bosch Commerce platform (custom SAP Hybris extension) operating in 19 countries.",
-                desc_orange_old: "Backend for 'Orange Love' portal, POS integration, pickup point maps, and SEO optimization.",
-                desc_polkomtel: "Transitioning commerce systems to SAP Hybris platform. Supporting Call Center and eCare modules.",
-                desc_early: "First steps in IT: SAP integrations, ATG Commerce, Eclipse plugins, training projects.",
+      <!-- EARLY CAREER -->
+      <div class="timeline-item left reveal-left">
+        <div class="content">
+          <span class="date">2014 - 2016</span>
+          <h3 class="job-title" data-i18n="role_early">Early Career / Internships</h3>
+          <span class="company">Polkomtel / T-Systems / Amg.lab</span>
+          <p data-i18n="desc_early">Pierwsze kroki w IT: integracje SAP, ATG Commerce, pluginy Eclipse, projekty szkoleniowe.</p>
+        </div>
+      </div>
 
-                // Typewriter texts
-                type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast"]
-            }
-        };
+    </div>
+  </div>
+</section>
 
-        let currentLang = 'pl';
-        
-        // --- TYPEWRITER LOGIC ---
-        const textElement = document.getElementById("typewriter");
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeTimeout;
+<!-- TECH STACK SECTION WITH ICONS -->
+<section id="skills" style="background: #162032;">
+  <div class="container">
+    <h2 class="section-title reveal" data-i18n="skills_title">Moje Technologie</h2>
 
-        function type() {
-            const texts = translations[currentLang].type_texts;
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                textElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
+    <h3 class="skills-header reveal">Core & Backend</h3>
+    <div class="skills-container reveal">
+      <div class="skill-tag"><i class="devicon-java-plain"></i> Java 17 / 11 / 8</div>
+      <div class="skill-tag"><i class="devicon-spring-original"></i> Spring Boot</div>
+      <div class="skill-tag"><i class="devicon-groovy-plain"></i> Groovy & Spock</div>
+      <div class="skill-tag">SAP Commerce (Hybris)</div>
+      <div class="skill-tag">Microservices</div>
+      <div class="skill-tag"><i class="devicon-mysql-plain"></i> SQL (MySQL)</div>
+      <div class="skill-tag"><i class="devicon-oracle-original"></i> Oracle DB</div>
+      <div class="skill-tag"><i class="devicon-nodejs-plain"></i> Node.js</div>
+    </div>
 
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                typeTimeout = setTimeout(type, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                typeTimeout = setTimeout(type, 500);
-            } else {
-                typeTimeout = setTimeout(type, isDeleting ? 50 : 100);
-            }
-        }
+    <h3 class="skills-header reveal">Cloud & DevOps</h3>
+    <div class="skills-container reveal">
+      <div class="skill-tag"><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS</div>
+      <div class="skill-tag"><i class="devicon-azure-plain"></i> Azure</div>
+      <div class="skill-tag"><i class="devicon-docker-plain"></i> Docker</div>
+      <div class="skill-tag"><i class="devicon-git-plain"></i> Git</div>
+      <div class="skill-tag"><i class="devicon-jira-plain"></i> Jira</div>
+    </div>
 
-        // --- LANGUAGE SWITCHER LOGIC ---
-        function setLanguage(lang) {
-            currentLang = lang;
-            
-            document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
-            });
+    <h3 class="skills-header reveal" style="color: var(--ai-accent);">AI & GenAI Integration</h3>
+    <div class="skills-container reveal">
+      <!-- Claude -->
+      <div class="skill-tag ai">
+        <img src="images/claude-color.svg" alt="Claude"> Claude Sonnet
+      </div>
 
-            clearTimeout(typeTimeout);
-            textIndex = 0;
-            charIndex = 0;
-            isDeleting = false;
-            textElement.textContent = "";
-            type();
+      <!-- ChatGPT -->
+      <div class="skill-tag ai">
+        <img src="images/openai.svg" alt="ChatGPT"> ChatGPT
+      </div>
 
-            localStorage.setItem('preferred_lang', lang);
-        }
+      <!-- Perplexity -->
+      <div class="skill-tag ai">
+        <img src="images/perplexity-color.svg" alt="Perplexity"> Perplexity
+      </div>
 
-        // --- SCROLL REVEAL ---
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
+      <!-- Gemini -->
+      <div class="skill-tag ai">
+        <img src="images/gemini-color.svg" alt="Gemini"> Gemini
+      </div>
 
-        window.addEventListener("scroll", reveal);
+      <!-- Suno -->
+      <div class="skill-tag ai">
+        <img src="images/suno.svg" alt="Suno"> Suno
+      </div>
 
-        // --- INIT ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferred_lang') || 'pl';
-            setLanguage(savedLang);
-            reveal();
-        });
+      <!-- LTX (Using Inline SVG as requested) -->
+      <div class="skill-tag ai">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+        LTX
+      </div>
 
-    </script>
+      <!-- VAN (Using Inline SVG as requested) -->
+      <div class="skill-tag ai">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+        VAN
+      </div>
+
+      <!-- ComfyUI -->
+      <div class="skill-tag ai">
+        <img src="images/comfyui-color.svg" alt="ComfyUI"> ComfyUI
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <h2 style="color: white; margin-bottom: 20px;" data-i18n="contact_title">Kontakt</h2>
+    <p style="font-size: 1.2rem;">📧 <a href="mailto:slayerhw@gmail.com" class="mail-link">slayerhw@gmail.com</a></p>
+    <p style="font-size: 1.2rem; margin-top: 10px;">📞 +48 697 526 445</p>
+
+    <div class="social-footer">
+      <a href="https://www.linkedin.com/in/paweł-szewczyk" target="_blank" class="social-link" title="LinkedIn">
+        <svg class="social-icon-large" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+
+    <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
+      &copy; 2025 Paweł Szewczyk.
+    </p>
+  </div>
+</footer>
+
+<!-- Ładowanie logiki JavaScript -->
+<script src="js/app.js"></script>
+
 </body>
 </html>
