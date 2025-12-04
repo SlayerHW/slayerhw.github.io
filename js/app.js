@@ -58,7 +58,7 @@ const translations = {
     desc_early: "First steps in IT: SAP integrations, ATG Commerce, Eclipse plugins, training projects.",
 
     // Typewriter texts
-    type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast"]
+    type_texts: ["Senior Backend Developer", "Java & Spring Expert", "AI Enthusiast","Full Time father and husband"]
   }
 };
 
